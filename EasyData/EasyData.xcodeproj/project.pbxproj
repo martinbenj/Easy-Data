@@ -20,6 +20,7 @@
 		B50D4ADD1931C95300402040 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B50D4ADB1931C95300402040 /* InfoPlist.strings */; };
 		B50D4ADF1931C95300402040 /* EasyDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D4ADE1931C95300402040 /* EasyDataTests.m */; };
 		B50D4AEA1931C97800402040 /* EasyDataInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B50D4AE91931C97800402040 /* EasyDataInitializer.m */; };
+		B50D4AEC1931CAF100402040 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50D4AEB1931CAF100402040 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B50D4ADE1931C95300402040 /* EasyDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyDataTests.m; sourceTree = "<group>"; };
 		B50D4AE81931C97800402040 /* EasyDataInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyDataInitializer.h; sourceTree = "<group>"; };
 		B50D4AE91931C97800402040 /* EasyDataInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyDataInitializer.m; sourceTree = "<group>"; };
+		B50D4AEB1931CAF100402040 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50D4AEC1931CAF100402040 /* CoreData.framework in Frameworks */,
 				B50D4ABC1931C95200402040 /* CoreGraphics.framework in Frameworks */,
 				B50D4ABE1931C95200402040 /* UIKit.framework in Frameworks */,
 				B50D4ABA1931C95200402040 /* Foundation.framework in Frameworks */,
@@ -99,6 +102,7 @@
 		B50D4AB81931C95200402040 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B50D4AEB1931CAF100402040 /* CoreData.framework */,
 				B50D4AB91931C95200402040 /* Foundation.framework */,
 				B50D4ABB1931C95200402040 /* CoreGraphics.framework */,
 				B50D4ABD1931C95200402040 /* UIKit.framework */,
