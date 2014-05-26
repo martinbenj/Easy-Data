@@ -15,4 +15,16 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+// Insert an object into Core Data for a given class name and data object.
+- (void)insertObjectOfType:(id)className withValues:(NSDictionary*)values;
+
+// Retrieve a Core Data object for a given class name and search parameters.
+- (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value;
+
+// Delete a Core Data object for a given class name and search parameters. Returns the deleted object.
+- (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value;
+
+// Delete all Core Data entries for a given class.
+- (void)deleteAllObjectsOfType:(id)className;
+
 @end

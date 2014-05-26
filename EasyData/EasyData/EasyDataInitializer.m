@@ -22,6 +22,7 @@ typedef enum {insert, retrieve} type;
     NSEntityDescription *entity = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([className class]) inManagedObjectContext:context];
 
     // Get all keys in the dictionary
+    // How you do dis? No interwebs driving along the California coast
     // Call entity setValue forKey
 //    for (id object in values key) {
 //
@@ -90,7 +91,6 @@ typedef enum {insert, retrieve} type;
     }
     return YES;
 }
-
 
 - (NSManagedObjectContext *)managedObjectContext
 {
