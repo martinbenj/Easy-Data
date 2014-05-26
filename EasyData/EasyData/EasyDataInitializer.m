@@ -45,6 +45,41 @@ typedef enum {insert, retrieve} type;
     return [[context executeFetchRequest:request error:&error] objectAtIndex:0];
 }
 
+- (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
+    
+    // Can I insert a string value into a predicate as I've done below?
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:attribute ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    id object = [[context executeFetchRequest:request error:&error] objectAtIndex:0];
+    
+    [context deleteObject:object];
+    [self saveContext];
+    
+    return object;
+}
+
+- (BOOL)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+
 - (NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != nil) {
