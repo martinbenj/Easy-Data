@@ -22,7 +22,6 @@ typedef enum {insert, retrieve} type;
     NSEntityDescription *entity = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([className class]) inManagedObjectContext:context];
 
     // Get all keys in the dictionary
-    // How you do dis? No interwebs driving along the California coast
     // Call entity setValue forKey
 //    for (id object in values key) {
 //
@@ -44,6 +43,32 @@ typedef enum {insert, retrieve} type;
     
     NSError *error;
     return [[context executeFetchRequest:request error:&error] objectAtIndex:0];
+}
+
+- (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
+    
+    // Can I insert a string value into a predicate as I've done below?
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:attribute ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    id object = [[context executeFetchRequest:request error:&error] objectAtIndex:0];
+
+    // Get all keys in the dictionary and update the object's values with the key-value pairings.
+    // Call entity setValue forKey
+    //    for (id object in values key) {
+    //
+    //    }
+    
+    [self saveContext];
+    return object;
 }
 
 - (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {

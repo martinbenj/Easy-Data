@@ -21,6 +21,9 @@
 // Retrieve a Core Data object for a given class name and search parameters.
 - (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value;
 
+// Update a Core Data object for a given class name and search parameters with newly specified values. Returns the object. Only modifies the object's keys that are passed to the method, not all of the object's keys.
+- (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values;
+
 // Delete a Core Data object for a given class name and search parameters. Returns the deleted object.
 - (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value;
 
