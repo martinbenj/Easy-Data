@@ -166,4 +166,46 @@ typedef enum {insert, retrieve} type;
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - NSFetchedResultsController
+
+// Need the class name and key to sort the rc with
+- (NSFetchedResultsController *)createFetchedResultsControllerForClass:(id)className sortedByKey:keyName withBatchSize:(NSUInteger)batchSize
+{
+    // Because both the property name and the method name are 'fetchedResultsController', we must use _fetchedResultsController to access the property. self.fetchedResultsController will call the method, resulting in an infinite loop. The exception is when setting the property as we do below, e.g. self.fetchedResultsController = [something] or when sending a message to that instance as we do below with [fetchedResultsController performFetch:].
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([className class])
+                inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:batchSize];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:keyName
+                                                                   ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:context
+                                          sectionNameKeyPath:@"title"
+                                                   cacheName:nil];
+    
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+        // Error handling
+	}
+    
+    return _fetchedResultsController;
+}
+
 @end

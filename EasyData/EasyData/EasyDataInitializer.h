@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface EasyDataInitializer : NSObject
+@interface EasyDataInitializer : NSObject <NSFetchedResultsControllerDelegate>
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 // Insert an object into Core Data for a given class name and data object.
 - (void)insertObjectOfType:(id)className withValues:(NSDictionary*)values;
