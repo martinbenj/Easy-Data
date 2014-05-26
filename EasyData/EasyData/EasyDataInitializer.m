@@ -67,6 +67,18 @@ typedef enum {insert, retrieve} type;
     return object;
 }
 
+- (void)deleteAllObjectsOfType:(id)className {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
+    
+    NSError *error;
+    for (id object in [context executeFetchRequest:request error:&error]) {
+        [context deleteObject:object];
+    }
+    [self saveContext];
+}
+
 - (BOOL)saveContext
 {
     NSError *error = nil;
