@@ -8,11 +8,42 @@
 
 #import "EasyDataInitializer.h"
 
+typedef enum {insert, retrieve} type;
+
 @implementation EasyDataInitializer
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+- (void)insertObjectOfType:(id)className withValues:(NSDictionary*)values {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entity = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([className class]) inManagedObjectContext:context];
+
+    // Get all keys in the dictionary
+    // Call entity setValue forKey
+//    for (id object in values key) {
+//
+//    }
+}
+
+- (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
+    
+    // Can I insert a string value into a predicate as I've done below?
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
+    [request setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:attribute ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptors];
+    
+    NSError *error;
+    return [[context executeFetchRequest:request error:&error] objectAtIndex:0];
+}
 
 - (NSManagedObjectContext *)managedObjectContext
 {
