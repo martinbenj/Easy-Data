@@ -1,5 +1,5 @@
 //
-//  EasyDataInitializer.m
+//  EasyData.m
 //  EasyData
 //
 //  Created by Benjamin Martin on 5/24/14.

@@ -1,5 +1,5 @@
 //
-//  EasyDataInitializer.h
+//  EasyData.h
 //  EasyData
 //
 //  Created by Benjamin Martin on 5/24/14.
