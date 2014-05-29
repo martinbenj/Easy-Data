@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Benjamin Martin. All rights reserved.
 //
 
-#import "EasyDataInitializer.h"
+#import "EasyData.h"
 
 typedef enum {insert, retrieve} type;
 
-@implementation EasyDataInitializer
+@implementation EasyData
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -20,12 +20,12 @@ typedef enum {insert, retrieve} type;
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSEntityDescription *entity = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([className class]) inManagedObjectContext:context];
-
+    
     // Get all keys in the dictionary
     // Call entity setValue forKey
-//    for (id object in values key) {
-//
-//    }
+    //    for (id object in values key) {
+    //
+    //    }
 }
 
 - (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
@@ -60,7 +60,7 @@ typedef enum {insert, retrieve} type;
     
     NSError *error;
     id object = [[context executeFetchRequest:request error:&error] objectAtIndex:0];
-
+    
     // Get all keys in the dictionary and update the object's values with the key-value pairings.
     // Call entity setValue forKey
     //    for (id object in values key) {
@@ -180,7 +180,7 @@ typedef enum {insert, retrieve} type;
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([className class])
-                inManagedObjectContext:context];
+                                              inManagedObjectContext:context];
     
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:batchSize];
