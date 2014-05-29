@@ -25,3 +25,7 @@ Retrieval uses the [retrieveObjectOfType: withAttribute:(id)attribute equalTo:] 
 Example:
 
 ```Book *book = [self retrieveObjectOfType:NSStringFromClass([Book class]) withAttribute:@"title" equalTo:"The Great Gatsby"];```
+
+## License
+
+Usage is provided under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE for the full details.
