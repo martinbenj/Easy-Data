@@ -21,11 +21,10 @@ typedef enum {insert, retrieve} type;
     
     NSEntityDescription *entity = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([className class]) inManagedObjectContext:context];
     
-    // Get all keys in the dictionary
-    // Call entity setValue forKey
-    //    for (id object in values key) {
-    //
-    //    }
+    for (NSString *key in [values allKeys]) {
+        [entity setValue:[values objectForKey:key] forKey:key];
+    }
+    [self saveContext];
 }
 
 - (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
@@ -61,11 +60,9 @@ typedef enum {insert, retrieve} type;
     NSError *error;
     id object = [[context executeFetchRequest:request error:&error] objectAtIndex:0];
     
-    // Get all keys in the dictionary and update the object's values with the key-value pairings.
-    // Call entity setValue forKey
-    //    for (id object in values key) {
-    //
-    //    }
+    for (NSString* key in [values allKeys]) {
+        object[key] = [values objectForKey:key];
+    }
     
     [self saveContext];
     return object;
