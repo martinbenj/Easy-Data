@@ -19,7 +19,7 @@ In your project, import the EasyData header file into the class you wish to use 
 
 Create an create an EasyData instance to manipulate data. In the below examples, this is called 'easyDataInstance'.
 
-```@property (strong, nonatomic) EasyData *easyDataInstance;
+```@property (strong, nonatomic) EasyData *easyDataInstance;```
 
 ## Insertion
 
