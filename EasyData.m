@@ -16,6 +16,8 @@ typedef enum {insert, retrieve} type;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+#pragma mark - Insertion
+
 - (void)insertObjectOfType:(id)className withValues:(NSDictionary*)values {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -26,6 +28,8 @@ typedef enum {insert, retrieve} type;
     }
     [self saveContext];
 }
+
+#pragma mark - Retrieval
 
 - (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -43,6 +47,8 @@ typedef enum {insert, retrieve} type;
     NSError *error;
     return [[context executeFetchRequest:request error:&error] objectAtIndex:0];
 }
+
+#pragma mark - Updating
 
 - (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values {
     NSManagedObjectContext *context = [self managedObjectContext];
@@ -68,6 +74,8 @@ typedef enum {insert, retrieve} type;
     return object;
 }
 
+#pragma mark - Deletion (singular)
+
 - (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -90,6 +98,8 @@ typedef enum {insert, retrieve} type;
     return object;
 }
 
+#pragma mark - Deletion (plural)
+
 - (void)deleteAllObjectsOfType:(id)className {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -101,6 +111,8 @@ typedef enum {insert, retrieve} type;
     }
     [self saveContext];
 }
+
+#pragma mark - Core Data boilerplate
 
 - (BOOL)saveContext
 {
