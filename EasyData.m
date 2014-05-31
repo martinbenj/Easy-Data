@@ -163,49 +163,4 @@ typedef enum {insert, retrieve} type;
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-#pragma mark - createFetchedResultsController
-
-// Need the class name and key to sort the rc with
-- (NSFetchedResultsController *)createFetchedResultsControllerForClass:(id)className sortedByKey:keyName withBatchSize:(NSUInteger)batchSize
-{
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([className class])
-                                              inManagedObjectContext:context];
-    
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:batchSize];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:keyName
-                                                                   ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController *aFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:context
-                                          sectionNameKeyPath:@"title"
-                                                   cacheName:nil];
-    
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-        // Error handling
-	}
-    
-    return _fetchedResultsController;
-}
-
-#pragma mark - NSFetchedResultsControllerDelegate Methods
-
-
-
 @end
