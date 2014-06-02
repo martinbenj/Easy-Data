@@ -25,8 +25,6 @@ Create an create an EasyData instance to manipulate data. In the below examples,
 
 Insertion uses the [insertObjectOfType: withValues:] method. This inserts an object with key-value pairings into Core Data for a given class name and data object.
 
-```- (void)insertObjectOfType:(id)className withValues:(NSDictionary*)values;```
-
 Example:
 
 ```    
@@ -36,9 +34,7 @@ NSDictionary *objectToInsert = [[NSDictionary alloc] initWithObjectsAndKeys:@"Th
 
 ## Retrieval
 
-Retrieval uses the [retrieveObjectOfType: withAttribute:(id)attribute equalTo:] method. This retrieves an object that has a field equal to a specified value.
-
-```- (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value;```
+Retrieval uses the [retrieveObjectOfType:(id) withAttribute:(id) equalTo:(id)] method. This retrieves an object that has a field equal to a specified value.
 
 Example:
 
@@ -46,9 +42,7 @@ Example:
 
 ## Updating
 
-Updating uses the [updateObjectOfType: withAttribute: equalTo: withNewValues:] method. This retrieves an object that has a field equal to the specified value and then replaces all fields in the ```values``` dictionary with supplied values. Returns the updated object.
-
-```- (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values;```
+Updating uses the [updateObjectOfType:(id) withAttribute:(id) equalTo:(id) withNewValues:(NSDictionary*)] method. This retrieves an object that has a field equal to the specified value and then replaces all fields in the ```values``` dictionary with supplied values. Returns the updated object.
 
 Example:
 
@@ -59,7 +53,7 @@ Book *book = [self.easyDataInstance updateObjectOfType:[Book class] withAttribut
 
 ## Deletion (singular)
 
-Deleting a single object uses the [deleteObjectOfType: withAttribute: equalTo:] method. This deletes an object that has a field equal to the specified value. Returns the deleted object.
+Deleting a single object uses the [deleteObjectOfType:(id) withAttribute:(id) equalTo:(id)] method. This deletes an object that has a field equal to the specified value. Returns the deleted object.
 
 Example:
 
@@ -67,7 +61,7 @@ Example:
 
 ## Deletion (plural)
 
-Deleting multiple objects uses the [deleteAllObjectsOfType:] method. This deletes all objects of a given class. Does not return anything.
+Deleting multiple objects uses the [deleteAllObjectsOfType:(id)] method. This deletes all objects of a given class. Does not return anything.
 
 Example:
 
@@ -75,4 +69,4 @@ Example:
 
 ## License
 
-Usage is provided under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE for the full details.
+Usage is provided under the [MIT License](http://opensource.org/licenses/MIT).
