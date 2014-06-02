@@ -44,6 +44,19 @@ Example:
 
 ```Book *book = [self retrieveObjectOfType:NSStringFromClass([Book class]) withAttribute:@"title" equalTo:"The Great Gatsby"];```
 
+## Updating
+
+Updating uses the [updateObjectOfType: withAttribute: equalTo: withNewValues:] method. This retrieves an object that has a field equal to the specified value and then replaces all fields in the ```values``` dictionary with supplied values. Returns the updated object.
+
+```- (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values;```
+
+Example:
+
+```
+NSDictionary *newValues = [[NSDictionary alloc] initWithObjectsAndKeys: @"1984", @"title", 266, @"numberOfPages", nil];
+Book *book = [self updateObjectOfType:NSStringFromClass([Book class]) withAttribute:@"title" equalTo:"The Great Gatsby" withNewValues:newValues];
+```
+
 ## License
 
 Usage is provided under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE for the full details.
