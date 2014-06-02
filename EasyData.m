@@ -31,6 +31,7 @@ typedef enum {insert, retrieve} type;
 
 #pragma mark - Retrieval
 
+// This will eventually take a formatted string to be passed into the predicate so more operations can be evaluated, such as greater than, etc. This will change the method return an array of objects instead of a single one.
 - (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
     NSManagedObjectContext *context = [self managedObjectContext];
     
