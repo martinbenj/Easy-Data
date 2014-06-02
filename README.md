@@ -31,7 +31,7 @@ Example:
 
 ```    
 NSDictionary *objectToInsert = [[NSDictionary alloc] initWithObjectsAndKeys:@"The Great Gatsby", @"title", 180, @"numberOfPages", nil];
-[self.easyDataInstance insertObjectOfType:NSStringFromClass([Book class]) withValues:objectToInsert];
+[self.easyDataInstance insertObjectOfType:[Book class] withValues:objectToInsert];
 ```
 
 ## Retrieval
@@ -42,7 +42,7 @@ Retrieval uses the [retrieveObjectOfType: withAttribute:(id)attribute equalTo:] 
 
 Example:
 
-```Book *book = [self retrieveObjectOfType:NSStringFromClass([Book class]) withAttribute:@"title" equalTo:"The Great Gatsby"];```
+```Book *book = [self.easyDataInstance retrieveObjectOfType:[Book class] withAttribute:@"title" equalTo:"The Great Gatsby"];```
 
 ## Updating
 
@@ -54,8 +54,24 @@ Example:
 
 ```
 NSDictionary *newValues = [[NSDictionary alloc] initWithObjectsAndKeys: @"1984", @"title", 266, @"numberOfPages", nil];
-Book *book = [self updateObjectOfType:NSStringFromClass([Book class]) withAttribute:@"title" equalTo:"The Great Gatsby" withNewValues:newValues];
+Book *book = [self.easyDataInstance updateObjectOfType:[Book class] withAttribute:@"title" equalTo:"The Great Gatsby" withNewValues:newValues];
 ```
+
+## Deletion (singular)
+
+Deleting a single object uses the [deleteObjectOfType: withAttribute: equalTo:] method. This deletes an object that has a field equal to the specified value. Returns the deleted object.
+
+Example:
+
+```Book *book = [self.easyDataInstance deleteObjectOfType:[Book class] withAttribute:@"title" equalTo:@"1984"];```
+
+## Deletion (plural)
+
+Deleting multiple objects uses the [deleteAllObjectsOfType:] method. This deletes all objects of a given class. Does not return anything.
+
+Example:
+
+```[self.easyDataInstance deleteAllObjectsOfType:[Book class]]; ```
 
 ## License
 
