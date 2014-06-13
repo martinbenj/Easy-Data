@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "EasyData"
-  s.version      = "0.2"
+  s.version      = "0.3"
   s.summary      = "Helper methods for taking away the grunt work of Core Data."
 
   s.description  = <<-DESC
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/BenJamesMartin/Easy-Data.git", :tag => "0.2" } 
+  s.source       = { :git => "https://github.com/BenJamesMartin/Easy-Data.git", :tag => "0.3" } 
 
 # :commit => "862b9c7aa56f183743a99e3fa56e8e48e10402c6" }
 

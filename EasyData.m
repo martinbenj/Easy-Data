@@ -7,7 +7,6 @@
 //
 
 #import "EasyData.h"
-#import "AppDelegate.h"
 
 typedef enum {insert, retrieve} type;
 
