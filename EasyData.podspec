@@ -51,7 +51,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/BenJamesMartin/Easy-Data.git", :tag => "0.3" } 
 
-# :commit => "862b9c7aa56f183743a99e3fa56e8e48e10402c6" }
+# :commit => "df5179fcd0cd66179944b3901c1dc13e5d5a4cb6" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
