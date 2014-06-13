@@ -7,6 +7,7 @@
 //
 
 #import "EasyData.h"
+#import "AppDelegate.h"
 
 typedef enum {insert, retrieve} type;
 
@@ -31,13 +32,12 @@ typedef enum {insert, retrieve} type;
 
 #pragma mark - Retrieval
 
-// This will eventually take a formatted string to be passed into the predicate so more operations can be evaluated, such as greater than, etc. This will change the method return an array of objects instead of a single one.
-- (id)retrieveObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
+- (id)retrieveObjectOfType:(id)className withAttribute:(NSString*)attribute equalTo:(id)value {
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
     
-    // Can I insert a string value into a predicate as I've done below?
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
     [request setPredicate:predicate];
     
@@ -51,12 +51,11 @@ typedef enum {insert, retrieve} type;
 
 #pragma mark - Updating
 
-- (id)updateObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value withNewValues:(NSDictionary*)values {
+- (id)updateObjectOfType:(id)className withAttribute:(NSString*)attribute equalTo:(id)value withNewValues:(NSDictionary*)values {
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
     
-    // Can I insert a string value into a predicate as I've done below?
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
     [request setPredicate:predicate];
     
@@ -77,12 +76,11 @@ typedef enum {insert, retrieve} type;
 
 #pragma mark - Deletion (singular)
 
-- (id)deleteObjectOfType:(id)className withAttribute:(id)attribute equalTo:(id)value {
+- (id)deleteObjectOfType:(id)className withAttribute:(NSString*)attribute equalTo:(id)value {
     NSManagedObjectContext *context = [self managedObjectContext];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([className class])];
     
-    // Can I insert a string value into a predicate as I've done below?
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%@ == %@", attribute, value];
     [request setPredicate:predicate];
     
@@ -97,6 +95,8 @@ typedef enum {insert, retrieve} type;
     [self saveContext];
     
     return object;
+    
+    [self deleteAllObjectsOfType:self];
 }
 
 #pragma mark - Deletion (plural)
