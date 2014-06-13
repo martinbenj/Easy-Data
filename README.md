@@ -7,7 +7,7 @@ Helper methods for taking away the grunt work of Core Data.
 
 Download the EasyData CocoaPod by placing the following line in your Podfile:
 
-```pod 'EasyData', '~> 0.1'```
+```pod 'EasyData', '~> 0.2'```
 
 and then running from the directory where your Podfile is located:
 
