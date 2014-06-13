@@ -29,7 +29,7 @@ Example:
 
 ```    
 NSDictionary *objectToInsert = [[NSDictionary alloc] initWithObjectsAndKeys:@"The Great Gatsby", @"title", 180, @"numberOfPages", nil];
-[self.easyDataInstance insertObjectOfType:[Book class] withValues:objectToInsert];
+[self.easyDataInstance insertObjectOfType:Book withValues:objectToInsert];
 ```
 
 ## Retrieval
@@ -38,7 +38,7 @@ Retrieval uses the ```[retrieveObjectOfType:(id) withAttribute:(id) equalTo:(id)
 
 Example:
 
-```Book *book = [self.easyDataInstance retrieveObjectOfType:[Book class] withAttribute:@"title" equalTo:"The Great Gatsby"];```
+```Book *book = [self.easyDataInstance retrieveObjectOfType:Book withAttribute:@"title" equalTo:"The Great Gatsby"];```
 
 ## Updating
 
@@ -48,7 +48,7 @@ Example:
 
 ```
 NSDictionary *newValues = [[NSDictionary alloc] initWithObjectsAndKeys: @"1984", @"title", 266, @"numberOfPages", nil];
-Book *book = [self.easyDataInstance updateObjectOfType:[Book class] withAttribute:@"title" equalTo:"The Great Gatsby" withNewValues:newValues];
+Book *book = [self.easyDataInstance updateObjectOfType:Book withAttribute:@"title" equalTo:"The Great Gatsby" withNewValues:newValues];
 ```
 
 ## Deletion (singular)
@@ -57,7 +57,7 @@ Deleting a single object uses the ```[deleteObjectOfType:(id) withAttribute:(id)
 
 Example:
 
-```Book *book = [self.easyDataInstance deleteObjectOfType:[Book class] withAttribute:@"title" equalTo:@"1984"];```
+```Book *book = [self.easyDataInstance deleteObjectOfType:Book withAttribute:@"title" equalTo:@"1984"];```
 
 ## Deletion (plural)
 
@@ -65,7 +65,7 @@ Deleting multiple objects uses the ```[deleteAllObjectsOfType:(id)]``` method. T
 
 Example:
 
-```[self.easyDataInstance deleteAllObjectsOfType:[Book class]]; ```
+```[self.easyDataInstance deleteAllObjectsOfType:Book]; ```
 
 ## License
 
