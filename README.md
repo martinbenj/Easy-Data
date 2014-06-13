@@ -67,6 +67,12 @@ Example:
 
 ```[self.easyDataInstance deleteAllObjectsOfType:Book]; ```
 
+## What's Ahead
+
+ - Replace the withAttribute:(NSString*) ofType:(id) parameters in the retrieve, update, and delete methods with a predicate to give more diverse retrieval options. 
+ - Limit the number of returned/modified/deleted objects.
+ - Create a Swift version!
+
 ## License
 
 Usage is provided under the [MIT License](http://opensource.org/licenses/MIT).
